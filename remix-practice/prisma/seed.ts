@@ -40,6 +40,44 @@ async function seed() {
     },
   });
 
+  const posts = [
+    {
+      slug: "my-first-post",
+      title: "My First Post",
+      markdown: `
+      # This is my first post!
+
+      Isn't it great?
+      `.trim(),
+    },
+    {
+      slug: "made-with-remix",
+      title: "This is made with Remix",
+      markdown: `
+      # This is made with Remix
+
+      I am liking Remix and Prisma so far.
+      `.trim(),
+    },
+    {
+      slug: "strapi",
+      title: "I am going to connect this to Strapi next",
+      markdown: `
+      # Connecting Strapi and remix
+
+      Managing content from Strapi will be much easier
+      `.trim(),
+    },
+  ];
+
+  for (const post of posts) {
+    await prisma.post.upsert({
+      where: { slug: post.slug },
+      update: post,
+      create: post,
+    });
+  }
+
   console.log(`Database has been seeded. 🌱`);
 }
 
