@@ -45,28 +45,35 @@ async function seed() {
       slug: "my-first-post",
       title: "My First Post",
       markdown: `
-      # This is my first post!
+# This is my first post
 
-      Isn't it great?
-      `.trim(),
+Isn't it great?
+    `.trim(),
     },
     {
-      slug: "made-with-remix",
-      title: "This is made with Remix",
+      slug: "90s-mixtape",
+      title: "A Mixtape I Made Just For You",
       markdown: `
-      # This is made with Remix
+# 90s Mixtape
 
-      I am liking Remix and Prisma so far.
-      `.trim(),
-    },
-    {
-      slug: "strapi",
-      title: "I am going to connect this to Strapi next",
-      markdown: `
-      # Connecting Strapi and remix
-
-      Managing content from Strapi will be much easier
-      `.trim(),
+- I wish (Skee-Lo)
+- This Is How We Do It (Montell Jordan)
+- Everlong (Foo Fighters)
+- Ms. Jackson (Outkast)
+- Interstate Love Song (Stone Temple Pilots)
+- Killing Me Softly With His Song (Fugees, Ms. Lauryn Hill)
+- Just a Friend (Biz Markie)
+- The Man Who Sold The World (Nirvana)
+- Semi-Charmed Life (Third Eye Blind)
+- ...Baby One More Time (Britney Spears)
+- Better Man (Pearl Jam)
+- It's All Coming Back to Me Now (Céline Dion)
+- This Kiss (Faith Hill)
+- Fly Away (Lenny Kravits)
+- Scar Tissue (Red Hot Chili Peppers)
+- Santa Monica (Everclear)
+- C'mon N' Ride it (Quad City DJ's)
+    `.trim(),
     },
   ];
 
