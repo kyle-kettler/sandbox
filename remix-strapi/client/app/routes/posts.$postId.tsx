@@ -1,15 +1,13 @@
 import type {
-  ActionArgs,
   LoaderArgs,
 } from "@remix-run/node";
 import { json } from '@remix-run/node' // or cloudflare/deno
-import { useParams, useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 
 export const loader = async ({ params }: LoaderArgs) => {
-  const response = await fetch(`http://127.0.0.1:1337/api/posts/${params.postId}`);
+  const response = await fetch(`http://127.0.0.1:1337/api/posts/${params.postId}?populate=*`);
   const data = await response.json();
-  console.log('fetch data', data)
-  return json({data})
+  return json(data)
 };
 
 type Post = {
@@ -26,11 +24,13 @@ type Post = {
 
 export default function PostRoute() {
   const {data} = useLoaderData();
-  console.log('data', data)
+  const post = data
+  console.log('post', post)
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>{data.data.attributes.title}</h1>
-      <p>{data.data.attributes.body}</p>
+      <h1>{post.attributes.title}</h1>
+      <p>{post.attributes.body}</p>
+      <img src={`http://127.0.0.1:1337${post.attributes.cover.data.attributes.url}`}/>
     </div>
   );
 }
